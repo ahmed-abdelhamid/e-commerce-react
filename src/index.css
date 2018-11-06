@@ -23,3 +23,8 @@ code {
 .login-form__title {
   color: #888;
 }
+
+/* Navbar Styles */
+.dropdown-toggle:hover {
+  cursor: pointer;
+}
