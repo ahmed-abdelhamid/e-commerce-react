@@ -1,17 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { history } from '../Routers/AppRouter';
+import { login } from '../../action/auth';
+import authUsers from '../../authUser';
 
-export default class LoginPage extends Component {
+export class LoginPage extends Component {
 
   state = {
     usernamePlaceholder: 'Username',
-    passowrdPlaceholder: 'Password'
+    username: '',
+    passowrdPlaceholder: 'Password',
+    password: ''
   };
 
   handleClick = (e) => {
     e.preventDefault();
-
-    history.push('/dashboard');
+    
+    authUsers.map((user) => {
+      if (user.username === this.state.username && user.password === this.state.password) {
+        this.props.login(user.id);
+        history.push('/dashboard');
+      }
+    });
   };
 
   handleFocus = (e) => {
@@ -30,6 +40,15 @@ export default class LoginPage extends Component {
     );
   };
 
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    (name === 'username') ? (
+      this.setState(() => ({ username: value }))
+    ) : (
+      this.setState(() => ({ password: value }))
+    );
+  };
+
   render() {
     return (
       <div className="container text-center">
@@ -40,9 +59,11 @@ export default class LoginPage extends Component {
               type="text"
               className="form-control"
               name="username"
+              value={this.state.username}
               placeholder={this.state.usernamePlaceholder}
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
+              onChange={this.handleChange}
             />
           </div>
           <div className="form-group">
@@ -50,9 +71,11 @@ export default class LoginPage extends Component {
               type="password"
               className="form-control"
               name="password"
+              value={this.state.password}
               placeholder={this.state.passowrdPlaceholder}
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
+              onChange={this.handleChange}
             />
           </div>
           <button
@@ -66,3 +89,9 @@ export default class LoginPage extends Component {
     );
   }
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  login: (uid) => dispatch(login(uid))
+});
+
+export default connect(undefined, mapDispatchToProps)(LoginPage);
