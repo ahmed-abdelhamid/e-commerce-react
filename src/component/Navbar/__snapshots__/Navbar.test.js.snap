@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`shoould render navbar 1`] = `
+<nav
+  className="navbar navbar-expand-lg navbar-dark bg-dark"
+>
+  <div
+    className="container"
+  >
+    <button
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      className="navbar-toggler"
+      data-target="#navbarSupportedContent"
+      data-toggle="collapse"
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+    <div
+      className="collapse navbar-collapse"
+      id="navbarSupportedContent"
+    >
+      <div
+        className="navbar-nav mr-auto"
+      >
+        <NavLink
+          activeClassName="active"
+          aria-current="page"
+          className="nav-item nav-link"
+          to="/dashboard"
+        >
+          Home
+        </NavLink>
+        <NavLink
+          activeClassName="active"
+          aria-current="page"
+          className="nav-item nav-link"
+          to="/categories"
+        >
+          Categories
+        </NavLink>
+        <NavLink
+          activeClassName="active"
+          aria-current="page"
+          className="nav-item nav-link"
+          to="items"
+        >
+          Items
+        </NavLink>
+        <NavLink
+          activeClassName="active"
+          aria-current="page"
+          className="nav-item nav-link"
+          to="/members"
+        >
+          Members
+        </NavLink>
+        <NavLink
+          activeClassName="active"
+          aria-current="page"
+          className="nav-item nav-link"
+          to="/statistics"
+        >
+          Statistics
+        </NavLink>
+        <NavLink
+          activeClassName="active"
+          aria-current="page"
+          className="nav-item nav-link"
+          to="/logs"
+        >
+          Logs
+        </NavLink>
+      </div>
+    </div>
+    <div
+      className="navbar-nav nav-item dropdown"
+    >
+      <span
+        aria-expanded="false"
+        aria-haspopup="true"
+        className="nav-link dropdown-toggle"
+        data-toggle="dropdown"
+        id="navbarDropdown"
+      >
+        $Username
+      </span>
+      <div
+        aria-labelledby="navbarDropdown"
+        className="dropdown-menu"
+      >
+        <Link
+          className="dropdown-item"
+          replace={false}
+          to="/edit"
+        >
+          Edit Profile
+        </Link>
+        <Link
+          className="dropdown-item"
+          replace={false}
+          to="/setting"
+        >
+          Setting
+        </Link>
+        <Link
+          className="dropdown-item"
+          replace={false}
+          to="/"
+        >
+          Logout
+        </Link>
+      </div>
+    </div>
+  </div>
+</nav>
+`;
