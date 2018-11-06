@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render dashboard page 1`] = `
+<div
+  className="container text-center"
+>
+  <form
+    className="login-form"
+  >
+    <h1
+      className="login-form__title"
+    >
+      Login Admin
+    </h1>
+    <div
+      className="form-group"
+    >
+      <input
+        className="form-control"
+        name="username"
+        onBlur={[Function]}
+        onFocus={[Function]}
+        placeholder="Username"
+        type="text"
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <input
+        className="form-control"
+        name="password"
+        onBlur={[Function]}
+        onFocus={[Function]}
+        placeholder="Password"
+        type="password"
+      />
+    </div>
+    <button
+      className="btn btn-primary"
+      onClick={[Function]}
+    >
+      Login
+    </button>
+  </form>
+</div>
+`;
