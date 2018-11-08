@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logout } from '../../action/auth';
+import { logout } from '../../action/auth/auth';
 
 export const DropdownMenu = (props) => (
   <div className="navbar-nav nav-item dropdown">

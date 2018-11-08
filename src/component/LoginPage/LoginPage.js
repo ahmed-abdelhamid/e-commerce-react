@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { history } from '../Routers/AppRouter';
-import { login } from '../../action/auth';
-import authUsers from '../../authUser';
+import { login } from '../../action/auth/auth';
+import authUsers from '../../fixtures/authUser';
 
 export class LoginPage extends Component {
   state = {
@@ -67,7 +67,7 @@ export class LoginPage extends Component {
   }
 };
 
-const FormikLoginPage = withFormik({
+export const FormikLoginPage = withFormik({
   mapPropsToValues() {
     return {
       username: '',

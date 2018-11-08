@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render DropdownMenu correctly 1`] = `
+<div
+  className="navbar-nav nav-item dropdown"
+>
+  <span
+    aria-expanded="false"
+    aria-haspopup="true"
+    className="nav-link dropdown-toggle"
+    data-toggle="dropdown"
+    id="navbarDropdown"
+  >
+    Ahmed Abdelhamid
+  </span>
+  <div
+    aria-labelledby="navbarDropdown"
+    className="dropdown-menu"
+  >
+    <Link
+      className="dropdown-item"
+      replace={false}
+      to="/edit"
+    >
+      Edit Profile
+    </Link>
+    <Link
+      className="dropdown-item"
+      replace={false}
+      to="/setting"
+    >
+      Setting
+    </Link>
+    <button
+      className="dropdown-item"
+      onClick={[Function]}
+    >
+      Logout
+    </button>
+  </div>
+</div>
+`;

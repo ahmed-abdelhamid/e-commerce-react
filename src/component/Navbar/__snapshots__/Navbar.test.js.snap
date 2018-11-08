@@ -77,45 +77,7 @@ exports[`shoould render navbar 1`] = `
         </NavLink>
       </div>
     </div>
-    <div
-      className="navbar-nav nav-item dropdown"
-    >
-      <span
-        aria-expanded="false"
-        aria-haspopup="true"
-        className="nav-link dropdown-toggle"
-        data-toggle="dropdown"
-        id="navbarDropdown"
-      >
-        $Username
-      </span>
-      <div
-        aria-labelledby="navbarDropdown"
-        className="dropdown-menu"
-      >
-        <Link
-          className="dropdown-item"
-          replace={false}
-          to="/edit"
-        >
-          Edit Profile
-        </Link>
-        <Link
-          className="dropdown-item"
-          replace={false}
-          to="/setting"
-        >
-          Setting
-        </Link>
-        <Link
-          className="dropdown-item"
-          replace={false}
-          to="/"
-        >
-          Logout
-        </Link>
-      </div>
-    </div>
+    <Connect(DropdownMenu) />
   </div>
 </nav>
 `;
