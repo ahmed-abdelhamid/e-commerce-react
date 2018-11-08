@@ -1,27 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withFormik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 import { history } from '../Routers/AppRouter';
 import { login } from '../../action/auth';
 import authUsers from '../../authUser';
 
 export class LoginPage extends Component {
-
   state = {
     usernamePlaceholder: 'Username',
-    username: '',
     passowrdPlaceholder: 'Password',
-    password: ''
-  };
-
-  handleClick = (e) => {
-    e.preventDefault();
-    
-    authUsers.map((user) => {
-      if (user.username === this.state.username && user.password === this.state.password) {
-        this.props.login(user.id);
-        history.push('/dashboard');
-      }
-    });
   };
 
   handleFocus = (e) => {
@@ -40,58 +28,72 @@ export class LoginPage extends Component {
     );
   };
 
-  handleChange = (e) => {
-    const { name, value } = e.target;
-    (name === 'username') ? (
-      this.setState(() => ({ username: value }))
-    ) : (
-      this.setState(() => ({ password: value }))
-    );
-  };
-
   render() {
+    const { touched, errors, values } = this.props;
     return (
       <div className="container text-center">
-        <form className="login-form">
+        <Form className="login-form">
           <h1 className="login-form__title">Login Admin</h1>
           <div className="form-group">
-            <input
+            { touched.username && errors.username && <div className="error">{errors.username}</div> }
+            <Field
               type="text"
               className="form-control"
               name="username"
-              value={this.state.username}
+              value={values.username}
               placeholder={this.state.usernamePlaceholder}
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
-              onChange={this.handleChange}
             />
           </div>
           <div className="form-group">
-            <input
+            { touched.password && errors.password && <div className="error">{errors.password}</div> }
+            <Field
               type="password"
               className="form-control"
               name="password"
-              value={this.state.password}
+              value={values.password}
               placeholder={this.state.passowrdPlaceholder}
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
-              onChange={this.handleChange}
             />
           </div>
-          <button
-            onClick={this.handleClick}
-            className="btn btn-primary"
-          >
+          <button type="submit" className="btn btn-primary">
             Login
           </button>
-        </form>
+        </Form>
       </div>
     );
   }
 };
 
+const FormikLoginPage = withFormik({
+  mapPropsToValues() {
+    return {
+      username: '',
+      password: ''
+    };
+  },
+  validationSchema: Yup.object().shape({
+    username: Yup.string().required(),
+    password: Yup.string().required()
+  }),
+  handleSubmit(values, { props, setErrors }) {
+    authUsers.map((user) => {
+      if (user.username === values.username && user.password === values.password) {
+        props.login(user);
+        history.push('/dashboard');
+      } else {
+        setErrors({
+          username: 'Wrong username or password'
+        })
+      }
+    });  
+  }
+})(LoginPage);
+
 const mapDispatchToProps = (dispatch) => ({
   login: (uid) => dispatch(login(uid))
 });
 
-export default connect(undefined, mapDispatchToProps)(LoginPage);
+export default connect(undefined, mapDispatchToProps)(FormikLoginPage);

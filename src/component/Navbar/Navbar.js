@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import DropdownMenu from './DropdownMenu';
 
 const Navbar = () => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -18,16 +19,7 @@ const Navbar = () => (
           <NavLink to="/logs" className="nav-item nav-link" activeClassName="active">Logs</NavLink>
         </div>
       </div>
-      <div className="navbar-nav nav-item dropdown">
-        <span className="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          $Username
-        </span>
-        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-          <Link to="/edit" className="dropdown-item">Edit Profile</Link>
-          <Link to="/setting" className="dropdown-item">Setting</Link>
-          <Link to="/" className="dropdown-item">Logout</Link>
-        </div>
-      </div>
+      <DropdownMenu />
     </div>
   </nav>
 );
